@@ -1,17 +1,12 @@
 from fastapi import APIRouter, FastAPI, Header,status, HTTPException
 from typing import Optional, List
-from models.books_models import BookModel, BookUpdateModel, books
+from data.book_data import books
+from models.books_models import BookModel, BookUpdateModel
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
 endPoints = APIRouter()
 app = FastAPI()
-
-
-@app.get('/greet/')
-async def greet_name(age:int = 0, name: Optional[str] = "User"):
-    return {'message': f'Hello, {name}', "age":age}
-
 
 ################# BOOK METHODS ########################################################
 
