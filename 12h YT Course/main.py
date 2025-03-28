@@ -14,7 +14,7 @@ app = FastAPI(
     title="Bookly",
     description="A REST API for a book review web service",
     version=version
-)
+    )
 
 # Log de l'initialisation de l'API
 logging.info(f"Initializing Bookly API - version {version}")
