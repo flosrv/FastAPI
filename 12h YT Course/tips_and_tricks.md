@@ -1,6 +1,23 @@
-Je vais te donner une documentation pro, détaillant les astuces et bonnes pratiques pour utiliser **FastAPI** et **Pydantic** dans un environnement de développement en production. J'ai inclus des conseils adaptés à des environnements professionnels. Voici la version améliorée et professionnelle.
+# Quand FastAPI charge indéfiniment, et que le code est correct, toujours checker si le port à utiliser n'est pas déjà utilisé
+C:\Users\f.gionnane>netstat -ano | findstr :8000
 
----
+  TCP    127.0.0.1:8000         0.0.0.0:0              LISTENING       17852
+  TCP    127.0.0.1:8000         0.0.0.0:0              LISTENING       11104
+
+  TCP    127.0.0.1:8000         127.0.0.1:51904        CLOSE_WAIT      17852
+
+  TCP    127.0.0.1:51904        127.0.0.1:8000         FIN_WAIT_2      5892
+  TCP    127.0.0.1:52075        127.0.0.1:8000         ESTABLISHED     5892
+
+# Ici on a un probleme avec le port 8000 et on voit qu'il est déjà occupé par deux processus. Tuons les !
+taskkill /PID 17852 /F
+taskkill /PID 11104 /F
+Opération réussie : le processus avec PID 11104 a été terminé.
+
+Ensuite on réessaie par ex:
+http://127.0.0.1:8000/api/v1/books
+Ca doit marcher  !
+
 
 # 📌 **Tips & Tricks pour l'utilisation de FastAPI & Pydantic (Version 0.115.12 / 2.10.6)**
 
