@@ -1,11 +1,10 @@
 from dotenv import load_dotenv
-from pydantic_settings import BaseSettings, SettingsConfigDict  # type: ignore
+from pydantic_settings import BaseSettings
 import os
+# Charger les variables d'environnement
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))  # Force le chemin absolu
 
-# Explicitly load environment variables from the .env file
-load_dotenv()
-
-# Define your settings class
+# Définir la classe de configuration
 class Settings(BaseSettings):
     DATABASE_URL: str
 
@@ -13,8 +12,5 @@ class Settings(BaseSettings):
         env_file = ".env"
         extra = "ignore"
 
-# Initialize the settings object
-settings = Settings()
-
-# Check if the DATABASE_URL is correctly loaded via Pydantic
-print(settings.DATABASE_URL)
+# Créer une instance de configuration
+Config = Settings()  # Correction ici

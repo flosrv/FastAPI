@@ -1,19 +1,36 @@
-from sqlalchemy import create_engine
+from sqlmodel import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import AsyncEngine
-from config import Settings
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
+import os
+from dotenv import load_dotenv
 
-# Initialize settings object
-settings = Settings()
+# Charger les variables d'environnement du fichier .env
+load_dotenv()
 
-# Create the database engine using the DATABASE_URL from settings
-engine = AsyncEngine(
-    create_engine(
-        url=C
-        
-# Base class for all models
+# Récupérer la DATABASE_URL depuis les variables d'environnement
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("❌ DATABASE_URL is missing! Check your .env file.")
+
+print(f"✅ DATABASE_URL Loaded: {DATABASE_URL}")
+
+# Créer le moteur de la base de données avec SQLAlchemy
+engine = create_async_engine(DATABASE_URL, echo=True)
+
+# Créer la session asynchrone
+SessionLocal = sessionmaker(
+    engine, class_=AsyncSession, expire_on_commit=False
+)
+
+# Base pour les modèles
 Base = declarative_base()
 
-# SessionLocal is used to create database sessions for interactions
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# Fonction pour initialiser la BDD
+async def init_db():
+    async with engine.begin() as conn:
+        result = await conn.execute("SELECT 'Hello';")
+        print(result.all())
