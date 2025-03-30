@@ -28,3 +28,14 @@ async def create_user(user:UserCreate,db: Session = Depends(get_db) ):
             "username": db_user.username,
             }    
 
+
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm =Depends(), db: Session = Depends(get_db)):
+    db_user = await services.authenticate(db, form_data.password)
+    if not db_user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect username or password")
+    access_token = await services.create_access_token(db_user.id, db_user.username)
+    return {"access_token" : access_token,
+            "token_type" :"bearer"
+            }
+
