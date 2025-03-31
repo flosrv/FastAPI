@@ -1,0 +1,67 @@
+{"Name":"Attack (m)","Description":"Activates the heroes basic attack. Changes range value between hero and target to (m)","Type":"Instant"}
+{"Name":"Attack (r)","Description":"Activates the heroes basic attack (ranged). Can not use (r) attacks or abilities against enemies at (m)","Type":"Instant"}
+{"Name":"Vorpal:","Description":"Kills any Creature at 1\/4 HP or below.","Type":"Instant"}
+{"Name":"Devastating","Description":"Doubles Total Damage","Type":"Instant"}
+{"Name":"Splash Damage x(x)","Description":"Affects up to (x) other enemies in melee or ranged","Type":"Instant"}
+{"Name":"Taunt (All)","Description":"All enemies must target the hero with any attacks for the next x turns","Type":"Instant "}
+{"Name":"Taunt (Targeted)","Description":"Target enemy must target hero with amy attacks for x turns","Type":"Instant"}
+{"Name":"Stealth","Description":"Hero can not be targeted by attacks or spells for x turns","Type":"Buff"}
+{"Name":"Bubble","Description":"Absorbs X damage before expiring","Type":"Buff"}
+{"Name":"Heal:","Description":"Restore x HP to target","Type":"Instant "}
+{"Name":"Regeneration","Description":"Restore xHp\/yturns","Type":"Buff"}
+{"Name":"Conversion","Description":"Change 2x1y for 3x","Type":"Instant"}
+{"Name":"Power Boost","Description":"exchange 3x for 5x next turn","Type":"Instant"}
+{"Name":"Drain","Description":"deal x damage, gain y HP","Type":"Instant "}
+{"Name":"Shield +x","Description":"Boost Armor Rating by x","Type":"Buff"}
+{"Name":"Ranged Aoe, AoE(r)","Description":"Affects only targets with (r) tag","Type":"Instant "}
+{"Name":"Melee AoE, AoE(m)","Description":"affects only targets with the (m) tag","Type":"Instant"}
+{"Name":"Protection from (insert arcana)","Description":"add +x Armor rating vs (insert Arcana)","Type":"Buff"}
+{"Name":"Teleport","Description":"Hero immediately travels a medium distance in a random direction ","Type":"Instant "}
+{"Name":"Movement","Description":"changes one targets range status from (m) to (r) or Vice versa","Type":"Instant"}
+{"Name":"Reduce Armor","Description":"Reduce targets armor rating by x","Type":"Curse"}
+{"Name":"Reduce Damage","Description":"Target\u2019s damage output reduced by x","Type":"Curse"}
+{"Name":"Polymorph","Description":"Replace Hero or Target with (creature described in ability)","Type":"Buff\/Curse"}
+{"Name":"Summon","Description":"Summon allied (creature described in ability) for x turns","Type":"Instant "}
+{"Name":"Boost Critical","Description":"increases critical chance by x for y turns","Type":"Buff"}
+{"Name":"Stun","Description":"Target can not take actions for x turns","Type":"Curse"}
+{"Name":"Dazed","Description":"Target can only use standard attacks and consumables for x turns","Type":"Curse "}
+{"Name":"Counter","Description":"the next (insert special mechanic type) is negated.","Type":"Triggered"}
+{"Name":"Bonus Damage  x(choose type)","Description":"Ability deals x damage to a target","Type":"Instant "}
+{"Name":"Deal x(damage type) (m) or (r)","Description":"This ability deals x damage of type y to a single target","Type":"Instant "}
+{"Name":"Random (x)","Description":"The ability chooses x targets at random","Type":null}
+{"Name":"Aura of (choose arcana)","Description":"abilities of the chosen arcana deal x more damage, and gain +x to hit against that arcana's enemy","Type":"Buff"}
+{"Name":"Weaken","Description":"Reduce target heroe's power Pool by x(S)","Type":"Curse"}
+{"Name":"Cripple","Description":"Reduce target heroe's power Pool by x(D)","Type":"Curse"}
+{"Name":"Confuse","Description":"Reduce target heroe's power Pool by x(I)","Type":"Curse "}
+{"Name":"Trickery","Description":"Reduce target heroe's power Pool by x(W)","Type":"Curse"}
+{"Name":"Knockback","Description":"Change any enemy currently in (m) to (r)","Type":"Instant "}
+{"Name":"Haste","Description":"reduce speed cost of all attacks and abilities by x, minimum 1","Type":" Buff"}
+{"Name":"Speed Boost","Description":"Hero's total speed pool increased by x","Type":"Instant "}
+{"Name":"Slow x(x)","Description":"Increase speed cost of all enemy abilities and attacks by x","Type":"Curse"}
+{"Name":"Fumble","Description":"Target, must spend +1d to attack or use abilities next turn, or else gain 50% chance to miss target","Type":"Curse"}
+{"Name":"Escape","Description":"change range to (r) (hero can not attack for 1 turn)","Type":"Instant "}
+{"Name":"Attack Bonus (AB)","Description":"Decreases the minimum dice roll value required to strike an enemy\u2019s Armor rating","Type":"Buff"}
+{"Name":"Absorb(x)","Description":"Each damage source of the appropriate type  has total damage value reduced by (x)","Type":"Triggered, Conditional "}
+{"Name":"Charge","Description":"Change range value to (m) ","Type":"Instant "}
+{"Name":"DOT","Description":"Deals x damage for y turns ","Type":"Curse "}
+{"Name":"Disarm x","Description":"Disable weapon, item, or ability for x turns ","Type":"Curse"}
+{"Name":"Boarding Bonus","Description":"Attempts to board have increased chance by +x","Type":"Buff"}
+{"Name":"Theft (x)","Description":"(Copy an ability from enemy, Cast it)","Type":"Instant "}
+{"Name":"Dispel ","Description":"Cancel remaining duration persistent effect","Type":"Instant "}
+{"Name":"Pacify","Description":"Target can not attack for x turns","Type":"Curse "}
+{"Name":"Armor Reduction x","Description":"Reduce AR by x","Type":"Curse "}
+{"Name":"Freeze x","Description":"Reduce Speed Pool by x","Type":"Instant "}
+{"Name":"(x:y:z:...)randomize","Description":" Choose one effect from set (x:y:z:...) at random","Type":"Conditional "}
+{"Name":"Immunity(Type)","Description":"All damage of (type) reduced to 0","Type":"Buff "}
+{"Name":"Shield x","Description":"Add x to AR","Type":"Buff "}
+{"Name":"Clumsiness x","Description":"Subtract x from attack roll","Type":"Curse "}
+{"Name":"Stability","Description":"All arcana damage from the opposed Arcana heals your hero. ","Type":"Buff "}
+{"Name":"Fear ","Description":"Target range from (m) to (r), cannot target caster ","Type":"Curse "}
+{"Name":"(O) ","Description":"Order Damage","Type":null}
+{"Name":"(P)","Description":"Physical Damage","Type":null}
+{"Name":"(C)","Description":"Chaos Damage","Type":null}
+{"Name":"(L)","Description":"Light Damage","Type":null}
+{"Name":"(D)","Description":"Darkness Damage","Type":null}
+{"Name":"Ability costs","Description":"Designated by xA , x=Integer value cost, A=Power Type (W,S,D,I)","Type":null}
+{"Name":"Instant ","Description":"Action occurs immediately ","Type":null}
+{"Name":"Buff\/Curse","Description":"These effects have a duration ","Type":null}

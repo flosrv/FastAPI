@@ -13,6 +13,10 @@ class UserIn(BaseUser):
 class UserOut(BaseUser):
     pass
 
+class UserInDB(BaseUser):
+    hashed_password: str
+
+
 class Image(BaseModel):
     url:str
     name:str

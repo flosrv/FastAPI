@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pymongo
+pandas
+logging
+starlette
+typing
+python-jose[cryptography]

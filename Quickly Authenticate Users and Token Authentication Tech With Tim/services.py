@@ -32,7 +32,6 @@ async def create_access_token(id:int, username:str):
             return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
 
 # get_current_user from token
-
 async def get_current_user(db:Session, token:Depends):
 
     try:
@@ -50,9 +49,7 @@ async def get_current_user(db:Session, token:Depends):
     except JWTError:
           return None
 
-
 # Create User
-
 async def create_user(db:Session, user: UserCreate):
     db_user = UserModel(
           username = user.username,

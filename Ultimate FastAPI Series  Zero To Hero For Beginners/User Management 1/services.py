@@ -50,9 +50,7 @@ async def get_current_user(db:Session, token:Depends):
     except JWTError:
           return None
 
-
 # Create User
-
 async def create_user(db:Session, user: UserCreate):
     db_user = UserModel(
           username = user.username,
@@ -61,8 +59,6 @@ async def create_user(db:Session, user: UserCreate):
     db.add(db_user)
     db.commit()
     return db_user
-
-
 
 
 

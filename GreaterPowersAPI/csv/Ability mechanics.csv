@@ -1,0 +1,68 @@
+Name,Description,Type
+Attack (m),Activates the heroes basic attack. Changes range value between hero and target to (m),Instant
+Attack (r),Activates the heroes basic attack (ranged). Can not use (r) attacks or abilities against enemies at (m),Instant
+Vorpal:,Kills any Creature at 1/4 HP or below.,Instant
+Devastating,Doubles Total Damage,Instant
+Splash Damage x(x),Affects up to (x) other enemies in melee or ranged,Instant
+Taunt (All),All enemies must target the hero with any attacks for the next x turns,Instant 
+Taunt (Targeted),Target enemy must target hero with amy attacks for x turns,Instant
+Stealth,Hero can not be targeted by attacks or spells for x turns,Buff
+Bubble,Absorbs X damage before expiring,Buff
+Heal:,Restore x HP to target,Instant 
+Regeneration,Restore xHp/yturns,Buff
+Conversion,Change 2x1y for 3x,Instant
+Power Boost,exchange 3x for 5x next turn,Instant
+Drain,"deal x damage, gain y HP",Instant 
+Shield +x,Boost Armor Rating by x,Buff
+"Ranged Aoe, AoE(r)",Affects only targets with (r) tag,Instant 
+"Melee AoE, AoE(m)",affects only targets with the (m) tag,Instant
+Protection from (insert arcana),add +x Armor rating vs (insert Arcana),Buff
+Teleport,Hero immediately travels a medium distance in a random direction ,Instant 
+Movement,changes one targets range status from (m) to (r) or Vice versa,Instant
+Reduce Armor,Reduce targets armor rating by x,Curse
+Reduce Damage,Target’s damage output reduced by x,Curse
+Polymorph,Replace Hero or Target with (creature described in ability),Buff/Curse
+Summon,Summon allied (creature described in ability) for x turns,Instant 
+Boost Critical,increases critical chance by x for y turns,Buff
+Stun,Target can not take actions for x turns,Curse
+Dazed,Target can only use standard attacks and consumables for x turns,Curse 
+Counter,the next (insert special mechanic type) is negated.,Triggered
+Bonus Damage  x(choose type),Ability deals x damage to a target,Instant 
+Deal x(damage type) (m) or (r),This ability deals x damage of type y to a single target,Instant 
+Random (x),The ability chooses x targets at random,NA
+Aura of (choose arcana),"abilities of the chosen arcana deal x more damage, and gain +x to hit against that arcana's enemy",Buff
+Weaken,Reduce target heroe's power Pool by x(S),Curse
+Cripple,Reduce target heroe's power Pool by x(D),Curse
+Confuse,Reduce target heroe's power Pool by x(I),Curse 
+Trickery,Reduce target heroe's power Pool by x(W),Curse
+Knockback,Change any enemy currently in (m) to (r),Instant 
+Haste,"reduce speed cost of all attacks and abilities by x, minimum 1", Buff
+Speed Boost,Hero's total speed pool increased by x,Instant 
+Slow x(x),Increase speed cost of all enemy abilities and attacks by x,Curse
+Fumble,"Target, must spend +1d to attack or use abilities next turn, or else gain 50% chance to miss target",Curse
+Escape,change range to (r) (hero can not attack for 1 turn),Instant 
+Attack Bonus (AB),Decreases the minimum dice roll value required to strike an enemy’s Armor rating,Buff
+Absorb(x),Each damage source of the appropriate type  has total damage value reduced by (x),"Triggered, Conditional "
+Charge,Change range value to (m) ,Instant 
+DOT,Deals x damage for y turns ,Curse 
+Disarm x,"Disable weapon, item, or ability for x turns ",Curse
+Boarding Bonus,Attempts to board have increased chance by +x,Buff
+Theft (x),"(Copy an ability from enemy, Cast it)",Instant 
+Dispel ,Cancel remaining duration persistent effect,Instant 
+Pacify,Target can not attack for x turns,Curse 
+Armor Reduction x,Reduce AR by x,Curse 
+Freeze x,Reduce Speed Pool by x,Instant 
+(x:y:z:...)randomize, Choose one effect from set (x:y:z:...) at random,Conditional 
+Immunity(Type),All damage of (type) reduced to 0,Buff 
+Shield x,Add x to AR,Buff 
+Clumsiness x,Subtract x from attack roll,Curse 
+Stability,All arcana damage from the opposed Arcana heals your hero. ,Buff 
+Fear ,"Target range from (m) to (r), cannot target caster ",Curse 
+(O) ,Order Damage,
+(P),Physical Damage,
+(C),Chaos Damage,
+(L),Light Damage,
+(D),Darkness Damage,
+Ability costs,"Designated by xA , x=Integer value cost, A=Power Type (W,S,D,I)",
+Instant ,Action occurs immediately ,
+Buff/Curse,These effects have a duration ,

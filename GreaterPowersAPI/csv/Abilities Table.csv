@@ -1,0 +1,199 @@
+Name,Power Cost,Description,Special Mechanic,Duration,Primary Power type,Secondary power type,Arcana Boost,Special retrictions,speed,Rarity,Animation,Particle Effect,Creator
+Shapechange,10i,Hero transforms into a dragon for 2 turns,Polymorph(self),,I,,,,3,R,,,Lord Onichan
+Helios Bombardment,10I,"Crit Bonus +2, +5(L) damage bonus/3 turns, Stun/1 turn, Blind/2 turns","Crit Boost, Damage, Stop, Blind",,I,,Light+1,Can only be used once per battle,2,R,,,Lord Onichan
+Lightning Carnival,10I,"(+5(L) Damage, Stun(AoE)(r),+1 Crit Bonus) (if hit=yes:reapply effect=yes)(if hit=no:dispel(self)=yes)",Special,,I,,Light+1,Can only be used once per battle,2,R,,,Lord Onichan
+Song of the Whale ,10I,Summon Cloudwhale/3 turns,Summon,,I,,Chaos +1,"Can only be used in skyship to skyship combat, once player reaches Tier 4 Gemini, they can buy this ability from a randomly generated Gemini port merchant ",3,R,,,Lord Onichan
+Spear/Sword/Hammer of Destiny,10S,"(+5)(L) damags bonus, Crit Damage +5(L), Priority=max, 1d6(L)/2 turns","Damage,  Crit Boost, Buff",,S,,Light or Order +1,Can only be used once per battle,2,R,,,Lord Onichan
+Divine Ascension,10w,Polymorph self Greater Archon,Polymorph(self),,W,,Light +1,,3,R,,,Lord Onichan
+Greater Resurrection ,10W,Return all friendly players and allied corpses to life within a 20 meter radius.,Resurrection (AoE),,W,,Light +1,,3,R,,,Lord Onichan
+Diabolical Heresy,10W,(Enemy team sacrifice)(random x1),Mind Control,,W,,Darkness or Chaos +1,,3,R,,,Lord Onichan
+Bulwark of Heaven,10W,"Dispel(all)(self), heal 1d6 hp/3 turns, Armor Boost +5, Absorb +5(P)","Regeneration, Armor, Buff",,W,,Light or Order +1,Can only be used once per battle,3,R,,,Lord Onichan
+Reaper of Souls,10W,"(+5(D) Damage Bonus, Crit Damage +5(D), if Target:dead=yes, then convert all damage into (drain) ","Damage, Crit Boost, Regeneration",,W,,Darkness +1,Can only be used once per battle,3,R,,,Lord Onichan
+Accurate Sniping,1d1i,Attack Boost for 2 Turns,3(AB),2,D,I,Order +1,,1,c,,,Lord Onichan
+Mechanical Accuracy,2d,Mechanoid augmentation is a helluva a thing,"Crit Boost 3, Attack Boost 3",2,D,,Order +1,,1,R,,,Lord Onichan
+Conversion DI,2D1I,Convert 2d1i into 3d,conversion,0,D,I,Chaos +1,,1,u,,,Lord Onichan
+Conversion DS,2d1s,Convert 2d1s into 3d,conversion,0,D,S,Chaos +1,,1,u,,,Lord Onichan
+Conversion DW,2d1w,Convert 2d1w into 3d,conversion,0,D,W,Chaos +1,,1,u,,,Lord Onichan
+Ember Fire,2I,Deal 1d6(L)/2 turns,Damage,,I,,Light+1,,1,U,,,Lord Onichan
+Mind Shield,2I,Next Arcana damage received is negated,Counter,,I,,Light+1,,2,U,,,Lord Onichan
+Conversion ID,2I1D,Convert2I1D into 3I,conversion,,I,D,Order +1,,1,u,,,Lord Onichan
+Rabbit Golem A,2i1d,"Summons, mechanical rabbit Golem A. stats: AR3,1d4(p),3hp/lvl",Summon,,I,D,Order +1,,1,c,,,Lord Onichan
+Conversion IS,2I1S,Convert2I1S into 3I,conversion,,I,S,Order +1,,1,u,,,Lord Onichan
+Conversion IW,2I1W,Convert2I1W into 3I,conversion,,I,W,Order +1,,1,u,,,Lord Onichan
+Clockwork Targeting,2i2d,Attack Random x2,Randomx2(any),,I,D,Order+1,Firearm or crossbow,1,U,,,Lord Onichan
+Quick Counter,2i2d,Counter the next spell that targets this hero,Counterspell,,I,D,Chaos +1,,1,U,,,Lord Onichan
+Close Ranks,2i2w,Only summoned allies can be targeted by enemies/2 turns,untargetable (all friendly),,I,W,Light +1,Number of allied summoned crew>1,2,U,,,Lord Onichan
+Son of a gun!,2I3D,"Haste +1, Pistol damage bonus +1d6(O)",Haste,,I,D,Any +1,Requires Pistol,2,U,,,Lord Onichan
+Tactical Maneuver,2i3w,On successful attack roll change Skyship range from (L)->(C),"If attack=hit, range to target=(C)",,I,W,Order +1,Must be in Skyship combat ,1,C,,,Lord Onichan
+Hard Block,2s,Increase Armor rating +2 / 2 turns,Armor Boost,,S,,,Req Shield,1,c,,,Lord Onichan
+War Cry,2S,(+2AB)/2 TURNS,Attack Bonus,,S,, ,,1,C,,,Lord Onichan
+Riposte,2S,Next attack received is negated,Counter,,S,,Order +1,,2,U,,,Lord Onichan
+Conversion SD,2s1d,Convert2S1D into 3S,conversion,,S,D,Light +1,,1,u,,,Lord Onichan
+Shrapnel Barrage,2s1d,All cannons gain (splash damage)x2 /1 Turn,"Splash Damage x2, cannons(friendly)",,S,D,Chaos +1,Must be in Skyship combat,2,C,,,Lord Onichan
+Conversion SI,2s1i,Convert2S1I into 3S,conversion,,S,I,Light +1,,1,u,,,Lord Onichan
+Empower Cannons,2s1i, friendly (Cannons)(gain +3 damage)(O)/2 turns ,Damage Bonus ,,S,I,Order +1,Must be in Skyship Combat,1,C,,,Lord Onichan
+Conversion SW,2S1W,Convert2S1W into 3S,conversion,,S,W,Light +1,,1,u,,,Lord Onichan
+Press the advantage,2s2i,Only summoned targets can be targeted/2 turns,"(untargetable),(all heroes)",,S,D,Chaos +1,Must be in melee combat,1,U,,,Lord Onichan
+Protection from Chaos,2w,Gain +2 Armor rating vs Chaos for 2 turns,Shield,,W,,Order +1,,2,C,,,Lord Onichan
+Protection from Darkness,2w,Gain +2 Armor rating vs Darkness for 2 turns,Shield,,W,,Light +1,,2,C,,,Lord Onichan
+Protection from Light,2w,Gain +2 Armor rating vs Lighht for 2 turns,Shield,,W,,Darkness +1,,2,C,,,Lord Onichan
+Protection from Order,2w,Gain +2 Armor rating vs Order for 2 turns,Shield,,W,,Chaos +1,,2,C,,,Lord Onichan
+Regeneration,2w,Heal 1d8/turn next 3 turns,Heal,3 turn,W,,Light +1,,2,U,,,Lord Onichan
+Flashbang,2W,Blind(t)(r)/1 turn,Blind,,W,,Light+1,,1,U,,,Lord Onichan
+Conversion WD,2W1D,Convert2W1D into 3w,conversion,,W,D,Darkness +1,,1,u,,,Lord Onichan
+Conversion WI,2W1I,Convert2W1I into 3w,conversion,,W,I,Darkness +1,,1,u,,,Lord Onichan
+Conversion ws,2w1s,Convert2W1D into 3w,conversion,,W,S,Darkness +1,,1,u,,,Lord Onichan
+Lake of Fire,2w2s,Deal 10(D)(AoE)(m)/2+(#of abilities used this turn) turns,Deal Damage (D)(AoE)(m),,W,S,Dartness +1,Aries Only,3,U,,,Lord Onichan
+Boost Displacement,2w3s,Immediately teleport to long range in relation to targeted enemy ship.,"(Escape), targeted",,W,S,Dark +1,"Must be in close range to targeted enemy, Skyship must have Boosters",3,R,,,Lord Onichan
+Concealment,3d,Disappear into the shadows,Stealth,3,D,,Chaos +1,,1,C,,,Lord Onichan
+Planned Quickness,3d,Stillness now leads to blinding grace later,Power Boost 5d (triggered),0:Beginning next turn ,D,,Order +1,,2,U,,,Lord Onichan
+Quickdraw,3D,Speed Boost 2,Speed Boost,,D,,Any +1,Requires Dagger,1,U,,,Lord Onichan
+"Shoot first, talk later!",3D,Priority +2,Speed Boost,,D,,Any +1,,1,U,,,Lord Onichan
+Reload Efficiency (Rockets),3d1i,Rocket Launcher cooldown -1/2 turns,"Cooldown reduction, rocket launcher, friendly ",,D,I,Order +1,Must be in Skyship combat,3,C,,,Lord Onichan
+Jury rigged winch,3d1i,Grappling Ballistae gains +5 (AB)/3 turns,(AB),,D,I,Chaos +1,"Must be in Skyship Combat, must have grappling Ballistae ",2,U,,,Lord Onichan
+Shadow Strikes,3d2w,All (P) gains (drain) /1 turn,Convert (P)->(Drain)(D),,D,W,Dark +1,,1,R,,,Lord Onichan
+Chaos Missiles,3i,Deal 1d4/2 lvls (C) to up to 3 random targets,"Damage, Random (any)",,I,,Chaos +1,,2,c,,,Lord Onichan
+Clockwork Missiles,3i,Deal (1d6+1)(O)/ 2 lvls ,"Damage, Targeted (any)",,I,,Order +1,,2,c,,,Lord Onichan
+Holy Missiles,3w,"Deal 1d4(L)/2 lvls, stun",Damage,,I,,Light +1,,2,c,,,Lord Onichan
+Vampiric Missiles,3i,Drain (1d4+1)(D)/3 lvls from a single target,Drain,,I,,Darkness +1,,2,c,,,Lord Onichan
+Rabbit Golem B,3i2d,"Summons, mechanical rabbit Golem b. stats: AR(5),1d4(p)+1(O),4hp/lvl",Summon,,I,D,Order +1,,2,c,,,Lord Onichan
+Strategic Placement,3i2w,On successful attack roll change Skyship range from (C)->(L),"If attack=hit, range to target=(L)",,W,I,Chaos +1,Must be in Skyship combat,1,C,,,Lord Onichan
+Optical Displacement Field,3i2w,Give ship (stealth)/2 turns ,Stealth (Skyship)(friendly),,I,W,Order +1,Must be in Skyship Combat,2,U,,,Lord Onichan
+Hawkeye,3I3d,(+5AB),Attack Bonus,,I,D,Order +1,,1,U,,,Lord Onichan
+Succubus Kiss,3I3W,Drain 1d8(D),Drain,,I,W,Darkness or Chaos +1,,1,U,,,Lord Onichan
+"""Fight Me!""",3s,All enemy attacks this turn target this hero,Taunt (all),,S,,,,1,c,,,Lord Onichan
+Stable Stance,3s,"resist(daze,crit,Stun)/ 2 turns","Resist(daze,stun), resist(critical hit)",,S,,,,1,c,,,Lord Onichan
+Vicious Bite,3s,"Grab your opponent and transfer a poisonous disease ridden substance onto them, Deals 1d4(D)+2(D) for 3 turns",DOT,,S,,Darkness +1,,1,c,,,Lord Onichan
+Shiver me timberrrrs!,3s or 3I,"Deal 1d8(p)+3(D), (Fear:Taunt)randomize/2 turns","DOT, (x:y)randomize",,S,I,Darkness +1,,2,C,,,Lord Onichan
+Rocket Overdrive (Charge),3s1d,Charge,(Charge),,S,D,Chaos +1,Must be at Long range in Skyship combat,2,C,,,Lord Onichan
+Perimeter Defenses,3s1d,Ship can not be boarded for 2 turns,Boarding=fail,,S,D,Light +1,Must be in Skyship combat,2,U,,,Lord Onichan
+Blunderbuss,3s1i,Fire your ranged weapon at a target in melee range. Deal explosive damage to nearby foes and get knocked back.,"Deal(2d8)(P)(m), splash2(C), escape",0,D,I,Chaos +1,Firearm,1,C,,,Lord Onichan
+Seismic Boom,3S1W,"Deal 1d4(L)AoE(m), Stun/1 Turn","Aoe(m), Stun",,S,W,Light +1,,2,u,,,Lord Onichan
+Bootin'n Lootin',3s3d,"deal 2d6(C), theft 1","Damage, Theft 1",,S,D,Chaos +1,,3,C,,,
+Battle Brothers,3S3W,"(+2(L),+2AR)(Friendly)(all)/2 turns","Damage Bonus, Shield ",,S,W,Light +1,,,U,,,
+Clumsiness,3w,"Target, must spend +1d to attack or use abilities next turn, or else gain 50% chance to miss target",Fumble,,W,,Chaos +1,,2,c,,,
+Holy Avenger,3w,Add +5 magical damage bonus to next attack,Damage Boost (magical),,W,,Light +1,,2,U,,,Lord Onichan
+Lesser Healing,3w,Heal Target Ally 1d8/2 lvl,Heal,,W,,Light +1,,2,C,,,Lord Onichan
+On yer feet!,3w,Regenerate 1d4hp/3 turns,Regeneration,,w,,Chaos +1,,2,U,,,Lord Onichan
+Thunderclap,3W,"Stun/1 turn, attempt stun(randomx1):(If stun=yes:repeat=yes):(if stun=no:repeat=no)","Stun, Special",,W,,Light+1,,2,U,,,Lord Onichan
+Gravities a Drag,3W,(friendly)(all)(attack value=r:valid target=no),Untargetable,,W,,Chaos +1,,2,C,,,Lord Onichan
+Arcana Dissipation,3w1s,Convert the next two incoming arcana damage sources into physical damage ,"Convert (A)->(P), next 2 damage source ",,W,S,Light +1,,1,R,,,Lord Onichan
+Mimic Potion,3w1s,Duplicates the effect of currently equipped consumable,"Copy(effect), (consumable)",,W,S,Dark +1,,1,R,,,Lord Onichan
+Righteous Armor,3w2s,Heal a random ally 1D8 each time (L) received. /1 turn,"If (L) received, heal(ally, random)",,S,W,Light +1,,3,U,,,Lord Onichan
+Unholy Channeling,3w2s,"(Deal 1d8(D) to self, Power Generation x2)/2turns","Damage(self)(D), Power generation increase x2",,W,S,Dark +1,,3,U,,,Lord Onichan
+“For Honour”,3w3I,"dispel(all)(friendly)(others), Heal(Friendly)(others)1d6/lvl ","Dispell, Heal",,W,I,Light +1,,2,U,,,Lord Onichan
+Groin Kick,4D,Kick wolfman in the nards!,Deal 2d6(p)(m):daze,0:2,D,,Chaos +1,,1,c,,,Lord Onichan
+Horn of Motion,4D,"Haste 1/2 turns, +2 crit boost","Haste, Crit boost",,D,,Order +1,,3,C,,,Lord Onichan
+Rope swing swashbucklers,4d2i,Summon 2 Gemini swashbucklers on next successful boarding action.,"Summon, triggered(boarding=success)",,D,I,Chaos +1,Must be in Skyship combat,3,U,,,Lord Onichan
+Battle Archivist,4d2w,Regenerate wisdom by attacking ,Add bonus: Power Boost 1w,0,D,W,Darkness +1,,2,R,,,Lord Onichan
+Temporal Mastery,4d4i,Warping the fabric of time itself ,Haste 2,2,D,I,Order +1,,3,R,,,Lord Onichan
+Attack Plan Alpha,4i,"Escape (all), +1 regeneration(party)/3 turns","escape, regeneration (party)",,I,,Order +1,,2,u,,,Lord Onichan
+Madness Breacher,4i,Confuse Target Enemy ,"Confuse, Targeted (any)",,I,,Chaos +1,,2,u,,,Lord Onichan
+Polymorph enemy,4i,Transform target enemy into a shield bunny for one turn,polymorph,,I,,Chaos +1,,2,u,,,Lord Onichan
+Rum Spirit,4I,Bubble 5(O)3(L)3(D),Bubble,,I,,Chaos +1,,,U,,,Lord Onichan
+Abyssal Acid,4I,"(Armor Reduction 4, drain 1d6(D)/2 turns)(AoE)","Damage, Debuff, AoE",,I,,Darkness or Chaos +1,recharge time 3 turns,3,C,,,Lord Onichan
+Chaos Matrix,4i2d,"All (P) -> (A, random)/2 turns","Convert (P) -> (A,random) / 2 Turns",,I,D,Chaos +1,,2,U,,,Lord Onichan
+Strategy of disengagement,4i2d,"End boarding action, return to Skyship combat",Change battle type,,I,D,Order +1,Must be in a boarding action,3,U,,,Lord Onichan
+Geistgestalt,4I2d,"Priority 2, stealth/1 turn","Stealth,Priority",,I,,Darkness+1,Only be used by Darkness,2,C,,,Lord Onichan
+Rabbit Golem C,4i3d,"Summons, mechanical rabbit Golem A. stats: AR(6),1d4(p)+2(O),5hp/lvl",Summon,,I,D,Order +1,,3,u,,,Lord Onichan
+Summon Clockwork Soldiers,4i3d,"Summons 1d4+1 Clockwork soldiers, level equal to=(hero level)(.65)",Summon,,I,D,Order +1,,2,c,,,Lord Onichan
+Extended Sorties,4i3d,Strike craft can fight for 5 turns/3 turns,Strike craft attack duration (4)->(5),,I,D,Order +1,,3,U,,,Lord Onichan
+Release the hounds,4i3d,"Summon 3 hounds of the Arcana with the higher aligment to player at Heros Level for 2 turns, Hounds have haste +2
+Aries = Reaver Demons
+Ivory = Fenris MK IV","Summon, Haste",,I,D,"Darkness +1 if Demons summoned
+Wisdom +1 if Fenris summoned",Cannot be used in skyship to skyship combat,3,U,,,Lord Onichan
+Blinding Strike,4s,"Deals 1d8+Weapon Enchant level Light Damage in melee, Blinds the enemy/2 turns","Targeted(m), Blind",,S,,Light+1,,1,C,,,Lord Onichan
+Divine Assault,4s,Charges an enemy from range and Deals 1d8(L)+Weapon enchant ,"Charge, Targeted (any)",,S,,Light+1,,1,U,,,Lord Onichan
+Machine Strike,4S,Hero's next attack gains +5/4lvls (P),Damage Boost (p),,S,,Order+1,,1,C,,,Lord Onichan
+Savior's Might,4S,All attacks against party member with lowest health now target this hero/ next 2 turns,Taunt (triggered=enemy attacking party member health lowest),,S,,Light +1,,1,C,,,Lord Onichan
+All guns blazing,4s,"(Damage Bonus x2, Crit Bonus +1, Cooldown +3)","Damage Bonus, Critical Bonus, + Weapon Cooldown ",,s,,Chaos +1,"Ship and Hero combat, requires cannon or firearm ",1,R,,,Lord Onichan
+Blessings of the Divine,4S,"(Damage Bonus+5(L),+3AR)/2 turns","Damage,  Shield",,S,,Light +1,,3,C,,,Lord Onichan
+Grappling hooks,4s2d,gain +2(BB)/2 turns ,Boarding Bonus,,S,D,Light +1,Must be in Skyship combat,2,C,,,Lord Onichan
+Greater Protection Against Chaos,4w,Gain +5 Armor Rating vs Chaos for 2 turns,Armor boost,,W,,Order +1,,2,U,,,Lord Onichan
+Greater Protection Against Darkness,4w,Gain +5 Armor Rating vs Darkness for 2 turns,Armor boost,,W,,Light +1,,2,U,,,Lord Onichan
+Greater Protection Against Light,4w,Gain +5 Armor Rating vs Light for 2 turns,Armor boost,,W,,Darkness +1,,2,U,,,Lord Onichan
+Greater Protection Against Order,4w,Gain +5 Armor Rating vs Order for 2 turns,Armor boost,,W,,Chaos +1,,2,U,,,Lord Onichan
+Holy Counter,4W,"Counter next ability that targets hero, Enemy is dazed 1 turn, Deal 1d6 Light Damage","Triggered(enemy targeting in), daze",,W,,Light+1,,1,C,,,Lord Onichan
+Vampiric Gaze,4w,DRAIN 1d4+1(D)/2lvls  ,"Drain, Targeted(Any)",,W,,Darkness +1,,2,u,,,Lord Onichan
+Cage of Justice,4w3s,Immobilize Target/1 turn,"Immobilize, Target ",,W,S,Light +1,,1,U,,,Lord Onichan
+Assassins Hexagram,5D,Attack two enemies in close range in rapid succession.,"Randomx2(Charge, Attack(m))",0,D,,Darkness +1,,2,U,,,Lord Onichan
+All hands on deck,5d,(Haste 2)/2 turns ,Haste ,,D,,Chaos +1,Must be in Skyship conbat,2,C,,,Lord Onichan
+Whispering Strike,5D,"AB +2, DB +2",Attack Bonus,,D,,"Dark+1, Chaos +1",Requires Sword,2,,,,Lord Onichan
+Evasive Maneuvers,5d1i,Increase Skyship +3 (AR)/2 turns,Skyship increase (AR),,D,I,Chaos +1,Must be in Skyship combat,1,C,,,Lord Onichan
+Heaven's Might,5d3s,Gain a boost of speed ,Speed boost 3,2,D,S,Light +1,,3,R,,,Lord Onichan
+Evil Touch,5i,(1d4(D)/3lvls) /2turns,"Targeted(m),DOT",,I,,Darkness+1,,1,C,,,Lord Onichan
+Lesser summoning Chaos,5i,Summons a pirate for 2 turns,Summon,,I,,Chaos +1,,3,U,,,Lord Onichan
+Lesser summoning Darkness,5i,Summons one undead for 2 turns,Summon,,I,,Darkness +1,,3,U,,,Lord Onichan
+Lesser summoning Order,5i,Summons a clockwork soldier for 2 turn,Summon,,I,,Order+1,,3,U,,,Lord Onichan
+Polymorph Ally,5i,Transform target ally into a vorpal bunny for one turn,polymorph,,I,,,,2,R,,,Lord Onichan
+Time dilation,5i,Slow target enemy by -2,"Slow, Targeted (any)",,I,,Order +1,,2,U,,,Lord Onichan
+Unholy curse,5i,Deals 1d4/2lvls Darkness Damage ,"Targeted, (r)",,I,,Darkness+1,,2,U,,,Lord Onichan
+Expert Firing Solution,5i,Ship weapons gain +5 AB/3 turns,(AB) (friendly ship),,I,,Order +1,Can not be used in boarding actions,3,U,,,Lord Onichan
+Mirror Magic,5i,"Copy target enemies hand, replace your hand with the same hand as targeted enemy","Convert (hand,friendly)->(hand,target)",,I,,Chaos +1,,3,U,,,Lord Onichan
+Geisterhand,5I,"Stops enemies boarding action, causes fear/terror and dandom 1d6 damage","Damage, Counter, Fear",,I,,Darkness+1,"Only be used by Darkness, must be in Skyship combat",1,C,,,Lord Onichan
+Evil Within,5I,(T)(r)(valid target:friendly=yes)(invalid target:friendly=no)/1 turn,Mind Control,,I,,Darkness or Chaos +1,,2,C,,,Lord Onichan
+Potion Barrage,5i2d,Heal party for 3d4 on next Rifle Attack,"Healing(party), Triggered (Attack)",,I,D,Order +1,Rifle equipped,3,r,,,Lord Onichan
+Mechanical Golem,5i3d,Polymorph self into Golem,Polymorph(self),,I,,Order,,3,U,,,Lord Onichan
+Poltergeist,5I5W,"(Fear, +5(D) damage bonus, slow 1)/3 turns, (to hit=yes)","Special - Damage, Slow, Fear",,I,W,Darkness+1,"Only be used by Darkness, only be used once per battle",3,R,,,Lord Onichan
+Holy Shield,5s,"Absorb 2D8 (P), Stun attacking enemy","Stunned (triggered=enemy attack), Absorb(P)",,S,,Light+1,,2,R,,,Lord Onichan
+"""Mano a Mano"" (Men in Tights reference)",5S,Taunt(r)(targeting)/2 turns,Taunt,,S,,Chaos +1,,1,C,,,Lord Onichan
+All for one and one for all!,5S/5D,"Attack x3, if damage=<1/2 target max hp:pacify(AoE)(all)=yes",Pacify,,S,D,Light or Order +1,Only be used once per battle (maybe Skyships too),3,R,,,Lord Onichan
+Corsair's Cannonade,5s2i,"2D12(C), AoE(r)",AoE(r),,S,I,Chaos +1,Requires Rifle,3,C,,,Lord Onichan
+Corsair’s Barrage,5s2i,"Call in an air strike from an allied Skyship for 1d8(P)/2 hero levels, AoE(all)",AoE(all),,S,I,Chaos +1,"Req, Skyship Hired",3,u,,,Lord Onichan
+The Flying Dutchman,5S5I,"(Damage Bonus +3(C)/2 turns, Stun(AoE)/1 Turn ","Damage Bonus, Stun(AoE)",,S,I,Darkness +1,"Must be in Skyship conbat, Can only be used once per battle ",1,R,,,Lord Onichan
+Knights of the Round,5S5W,"(1d4 tegeneration, +3(P)Absorb, +3AR)/2 turns","Damage Bonus, Crit Boosr, Regeneration, Absorb(P), Shield",,S,W,Light +1,Can only be used once per battle,,R,,,Lord Onichan
+Dark Fantasies,5w,Confuse Target Enemy / 2 turns,Confuse,,I,,Darkness +1,,2,c,,,Lord Onichan
+Lesser summoning Light,5w,Summons a human mercenary for 2 turns,Summon,,I,,Light+1,,3,U,,,Lord Onichan
+Divine Retaliation,5W,Deals 2d8 (L) to any enemy that damages Hero,Triggered(enemy damage in),,W,,Light+1,,3,U,,,Lord Onichan
+Evil Revenge,5W,Drains 1d4+1 (D) from any enemy that damages Hero,"Triggered(enemy damage in), Drain",,W,,Darkness +1,,3,U,,,Lord Onichan
+Chaos Negation,5w,Take no damage from Chaos for 1 turn,Bubble (chaos),,W,,Order +1,,2,R,,,
+Noise Pirates,5W,"All enemies dazed 1 turn, all enemies take 2d8 chaos damage","daze(all),Aoe",,W,,Chaos+1,,3,u,,,
+Predicted Entropy,5w,Grants armor Absorb +5(P)/2 turns,Absorb,,W,,Order+1,,2,C,,,
+Terror from the Depth,5W,"(T)(r)(damage source:self=yes, damage target:self=yes)",Mind Control,,W,,Darkness or Chaos +1,,3,C,,,MauganKhaine
+Höllenfeuer,5W,"Armor Reduction 5(AoE), deal 1d6(C)/4 turns(random x3)","Damage, Random, AoE",,W,,Chaos +1,recharge time 3 turns,3,C,,,MauganKhaine
+Astral EMP,5W3D,"(+5AB)(firearm, Cannon)(all)(AoE)",AB,,W,D,Chaos +1,Can only be used once per battle,3,R,,,MauganKhaine
+Juggernaut of Darkness,5w5s,"Charge enemy ship,  boarding attempts gain +5(AB)","Charge, Boarding Bonus",,W,S,Dark +1,Must be in Skyship combat,2,C,,,MauganKhaine
+Clockwork Theft,6D,Steal the wits of your enemy with this clockwork machination,Dazed(r),2,D,,Order +1,,2,C,,,MauganKhaine
+Assassinate,6d,Strike a devastating blow to end your opponent ,"Crit Boost 5, Vorpal",0,D,,Darkness +1,,2,R,,,MauganKhaine
+Maelstrom Speed,6d,Gain haste for a short time ,Haste 1,2,D,,Chaos +1,,2,U,,,MauganKhaine
+Kiss of Death,6D,Dash at blinding speed right up to your enemy to place the kiss of death upon them,"Charge(r), deal 3d6(C), Crit Boost 5",0,D,,Darkness +1,,1,R,,,MauganKhaine
+Abyssal Cloud,6i,Drain (1d4+1)(D)/2 lvls from Target  ,"Drain, Targeted(any)",,I,,Darkness +1,,3,c,,,MauganKhaine
+Chaos Storm,6i,Deal 1d6/2 lvls (C) to up to four random targets,"Damage, Random (any)",,I,,Chaos +1,,3,c,,,MauganKhaine
+Heaven's Lances,6i,"Deal 1d4(L)/2 lvls (AoE)(m), dazed/2 turns.","Damage, AoE(m), Daze",,I,,Light +1,,3,c,,,MauganKhaine
+Harbingers Sorrow,6i,Drains 1d4(D)/3lvls,"Targeted(m), Drain Life",,I,,Darkness+1,,2,R,,,MauganKhaine
+Overclock,6i,Haste +1 / 2 turns,Haste (abilities=O),,I,,Order +1,,1,r,,,MauganKhaine
+Rocket Barrage,6i,"Deal (1d6+1)(C)/2 lvls, AoE","Damage, AoE(all)",,I,,Chaos +1,,3,c,,,MauganKhaine
+Rocket in my Pocket,6i,Launch a rocket that deals 5d6 Order damage at Ranged,"AoE(r), Targeted(r)",,I,,Order+1,,3,R,,,MauganKhaine
+Mind Control,6i,Target enemy attacks caster’s next target / 2 turns,"(Shared target), targeted",,I,,Order +1,,3,R,,,MauganKhaine
+Helios Fireball,6I,"1d6(L), Slow 1(r)(t), Blind/1 turn","Damage, Slow, Blind",,I,,Light +1,"Must be in Skyship combat, 5 turns to rechange",3,C,,,MauganKhaine
+Clockwork Engines,6i2d,All friendly abilities and attacks gain +2 haste/2 turns ,"Haste, Friendly(all)",,D,I,Order +1,Must be in Skyship combat,3,R,,,MauganKhaine
+Shield Wall,6s,Increase armor rating +2 (Party),Armor Boost,,S,,Light +1,req shield,3,R ,,,MauganKhaine
+Chainsword Activate,6S,Hero's melee weapon gains +4 order damage for 3 turns,Damage Boost (order),,S,,Order+1,Melee weapon,2,R,,,MauganKhaine
+Kraken Smash,6s,"Deal Weapon Damage+1d8/3lvl (C), Splash Damage","Targeted(m),Splash Damage ",,S,,Chaos +1,,2,U,,,TPC
+Mechanical Armor,6S,absorb +5(p) 1turn/4 levels,absorb (p),,S,,Order+1,,2,U,,,MauganKhaine
+Berserker Ovverrun,6s,Roll to begin boarding action with a random enemy ship. +3(BB),"Charge, random x1, (BB)",,S,,Chaos +1,Must be in Skyship Combat,2,C,,,TPC
+Demonic Rock,6W,"Grant all party members +1 Attack, All enemies Dazed for 2 Turns while song is playing","Attack boost(party), daze(all)",,W,,Darkness +1,,3,c,,,MauganKhaine
+Fall from grace,6w,Polymorph self (lesser demon),Polymorph(self),,W,,Darkness +1,,3,u,,,MauganKhaine
+Greater Holy Shield ,6W,Grant each party member a shield thhat negates the next incoming damage source,Bubble,,W,,Light +1,,3,R,,,MauganKhaine
+Divine Battlefield,6w,Friendly Strike craft regenerate +5hp/turn,"Regeneration, strike craft(friendly, all)",,W,,Light +1,Must be in Skyship Combat,3,R,,,TPC
+Kamikaze,7D,"Charge(t), +5AB, +5shield."," charge, Shield, Boarding Bonus",,D,,Chaos +1,"Must be in skyship battle, results in immediate boarding action. Gemini Pirates only, to be granted by talking to old Gemini sailor in a tavern after Tier 3 is reached",2,U,,,MauganKhaine
+Arcana Stability,7W,"Next turn, all arcana damage from the opposed Arcana heals your hero. Damage from the same arcana is negated, and the other Arcana deal damage normally",Stability,,W,,Order +1,,3,R,,,TPC
+Resurrection,7W,Return a player or crew member from the dead,Resurrection,,W,,Light +1,,3,U,,,MauganKhaine
+Get over here!,7w,"Gain +5 to your next boarding action attempt., Stun enemies 1/turn, Gain +3(C) on every successful attack/2 turns","Stun, Damage Bonus, Boarding Bonus",,w,,Chaos +1,Must be in Skyship combat,3,R,,,TPC
+Clockwork Rats,8D,Summon Clockwork Vermin,Summon(Clockwork Rats),2,D,,Chaos +1,,3,U,,,MauganKhaine
+Charge of Gallanrty,8D,"Haste 1/1 turn, +2 crit boost, +5(O) Damage Bonus/1 turn, +5AB, priority=max","Damage, Crit Boost, Haste, AB",,D,,Order +1,"Must be in Skyship combat, only be used once per battle",2,R,,,MauganKhaine
+Spatial Miracle,8I,Escape (Party),Escape (Party),,I,,Light +1,,2,R ,,,MauganKhaine
+Gravity Well,8i,Slow all enemies by -1,Slow (AoE)(all),,I,,Order +1,,3,R,,,TPC
+Task Force Teleportation,8i,All friendly ships immediately change range to (L) relative to all enemy ships,"Movement, (C)->(L), (L)->(L), friendly(all)",,I,,Order +1,Must be in Skyship combat,3,U,,,MauganKhaine
+Marauder's Overrun,8s,Summon 1 buccaneer/3lvls,Summon,,S,,Chaos +1,,3,R,,,MauganKhaine
+Blessed Aura,8W,"Each time the hero is damaged, heal 1d6","Triggered(enemy damage in),heal(self)",,W,,Light +1,,2,R,,,MauganKhaine
+Rock Off,8W,Hero and Target enemy can only be targeted by each other for 3 turns," targeted(any), Untargetable(exception=caster+target)",,W,,Chaos+1,,3,R,,,MauganKhaine
+Holy Conversion,8w,Convert (A)-(L)/3 turns,"Convert (A, all)->(L)",,W,,Light +1,,2,U,,,MauganKhaine
+Courageous Sacrifice,8W,"Set HP(self)=0, Untargetable(friendly)(all)/2 turns","Set HP(self), untargetable(friendly)",,W,,Light +1,"Must be in Skyship combat, can only be used once per battle",1,R,,,MauganKhaine
+Greater Heal,9w,Heal all party members for 2d6/caster level,Heal,,W,,Light +1,,3,R,,,MauganKhaine
+Lords of Darkness,9w,Summon a Demon Prince for 1 turn.,Summon,,W,,Darkness +1,,3,r,,,MauganKhaine
+Name,Power Cost,Description,Special Mechanic,,Primary Power type,Secondary power type,Arcana Boost,Special retrictions,speed,Rarity,,,MauganKhaine
+Name,Power Cost,Description,Special Mechanic,,Primary Power type,Secondary power type,Arcana Boost,Special retrictions,speed,Rarity,,,MauganKhaine
+Name,Power Cost,Description,Special Mechanic,,Primary Power type,Secondary power type,Arcana Boost,Special retrictions,speed,Rarity,,,MauganKhaine
+Mechabunnicus,Special,"If Rabbit Golem A, B, and C are in play, summon the mechabunny of doom","Summon,triggered",,I,D,Order +1,,3,r,,,MauganKhaine
+Ability Challenge Submissions,,,,,,,,,,,,,Affaf Imran

@@ -28,7 +28,6 @@ async def create_user(user:UserCreate,db: Session = Depends(get_db) ):
             "username": db_user.username,
             }    
 
-
 @app.post("/token")
 async def login(form_data: OAuth2PasswordRequestForm =Depends(), db: Session = Depends(get_db)):
     db_user = await services.authenticate(db, form_data.password)
