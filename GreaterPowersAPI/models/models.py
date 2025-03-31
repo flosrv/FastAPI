@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
+
+
+################ PEOPLE ###############################################################################################
+
 # Classe Person qui sera une base pour d'autres classes
 class Person(BaseModel):
     name: str
@@ -28,30 +32,31 @@ class Player(BaseModel):  # Héritage de BaseModel
     achievements: Optional[List[str]] = None  # Liste d'achievements
     playtime_hours: Optional[int] = None
 
+################ GAME ASSETS ###############################################################################################
+
 # Modèle pour les objets de jeu
 class GameItem(BaseModel):
-    custom_id:int
     ASSIGNED_ARTIST: Optional[str] = None
     Name: str
     STATUS: Optional[str] = None
     Special_characteristic: Optional[str] = None
-    Speed: Optional[str] = None
+    Speed: Optional[int] = None
     rarity: Optional[str] = None
     special_restriction: Optional[str] = None
 
-    class Config:
-        # Pour exclure des champs comme _id de la sérialisation JSON
-        json_schema_extra = {
-            "exclude": {"_id"}
-        }
-
 # Modèle des armes héritant de GameItem
-class Weapon(GameItem):
+class WeaponIn(GameItem):
     Activation_cost: Optional[str] = None
     Arcana_Boost: Optional[str] = None
     Cooldown_in_turns: Optional[int] = None
-    Tier_Minimum: Optional[str] = None
+    Tier_Minimum: Optional[int] = None
     Type: Optional[str] = None
+
+class WeaponOut(WeaponIn):
+    custom_id : int
+    
+
+
 
 # Modèle des mécaniques de capacité héritant de GameItem
 class AbilityMechanics(BaseModel):

@@ -6,3 +6,4 @@ logging
 starlette
 typing
 python-jose[cryptography]
+motor

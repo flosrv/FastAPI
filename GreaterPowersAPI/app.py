@@ -2,13 +2,10 @@ from fastapi import FastAPI, HTTPException
 from starlette import status  
 from contextlib import asynccontextmanager
 from db.db_main import client_atlas, DarkstarDb  # Connexion MongoDB
-from models.models import Weapon, GameItem, Developer, User
-from models.models import Player, SkyshipUpgrades, ConsumablesAndNoncombatItems, AbilityMechanics, Ability
 from pymongo.errors import PyMongoError
 from starlette.responses import JSONResponse
 import json
 from routes import endPoint
-
 
 # 🌍 Lifecycle de l'application
 @asynccontextmanager
