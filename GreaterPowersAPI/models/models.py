@@ -44,6 +44,8 @@ class GameItem(BaseModel):
     rarity: Optional[str] = None
     special_restriction: Optional[str] = None
 
+################# WEAPONS ##############################################################################
+
 # Modèle des armes héritant de GameItem
 class WeaponIn(GameItem):
     Activation_cost: Optional[str] = None
@@ -55,48 +57,65 @@ class WeaponIn(GameItem):
 class WeaponOut(WeaponIn):
     custom_id : int
     
-
-
+################# ABILITY MECHS ##############################################################################
 
 # Modèle des mécaniques de capacité héritant de GameItem
-class AbilityMechanics(BaseModel):
-    custom_id:int
+class AbilityMechIn(BaseModel):
     Description: Optional[str] = None
-    Name: Optional[str] = None
+    Name: str
     Type: Optional[str] = None
+
+# Modèle des mécaniques de capacité héritant de GameItem
+class AbilityMechOut(AbilityMechIn):
+    custom_id:int
+
+################# SKYSHIPS UPGRADES ##############################################################################
 
 # Modèle des améliorations de Skyship héritant de GameItem
-class SkyshipUpgrades(GameItem):
+class SkyshipUpgradesIn(GameItem):
     Activation_cost: Optional[str] = None
     Arcana_Requirement: Optional[str] = None
-    Cooldown: Optional[str] = None
+    Cooldown: Optional[int] = None
     Ineffective_Range: Optional[str] = None
     Optimal_Range: Optional[str] = None
-    Tier_Restriction: Optional[str] = None
+    Tier_Restriction: Optional[int] = None
     Type: Optional[str] = None
 
+class SkyshipUpgradesOut(SkyshipUpgradesIn):
+    custom_id:int
+
+################# CONSUMABLES NON COMBAT ITEMS ##############################################################################
+
 # Modèle pour les consommables et objets non-combattants héritant de GameItem
-class ConsumablesAndNoncombatItems(GameItem):
+class ConsumablesAndNoncombatItemsIn(GameItem):
     Arcana_Restriction: Optional[str] = None
     Class_Restriction: Optional[str] = None
     Description: Optional[str] = None
     Special_Mechanic: Optional[str] = None
     Special_Restriction: Optional[str] = None
 
-# Modèle pour les tables de capacité
-class Ability(BaseModel):
+class ConsumablesAndNoncombatItemsOut(ConsumablesAndNoncombatItemsIn):
     custom_id:int
+
+# Modèle pour les tables de capacité
+class AbilityIn(BaseModel):
     Animation: Optional[str] = None
     Arcana_Boost: Optional[str] = None
-    Creator: str
-    Description: str
-    Duration: str
+    Creator: Optional[str] = None
+    Description: Optional[str] = None
+    Duration: Optional[int] = None
     Name: str
-    Particle_Effect: str
-    Power_Cost: str
-    Primary_Power_type: str
-    Rarity: str
-    Secondary_power_type: str
-    Special_Mechanic: str
-    Special_restrictions: str
-    speed: str
+    Particle_Effect: Optional[str] = None
+    Power_Cost: Optional[str] = None
+    Primary_Power_type: Optional[str] = None
+    Rarity: Optional[str] = None
+    Secondary_power_type: Optional[str] = None
+    Special_Mechanic: Optional[str] = None
+    Special_restrictions: Optional[str] = None
+    speed: Optional[int] = None
+
+class AbilityOut(AbilityIn):
+    custom_id:int
+
+
+
