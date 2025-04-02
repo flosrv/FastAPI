@@ -1,15 +1,17 @@
-WEAPONS:
+## WEAPONS:
 GET ALL
-GET BY : Name, ID
+GET BY : ID, NAME
 POST
 
-Abilities:
+## Abilities:
 
-Ability Mechs:
-
-Skyships Upgrades:
+## Ability Mechs:
 GET ALL
-GET BY : ID
+GET BY : NAME, ID
 
-Consumable and Non Combat:
+## Skyships Upgrades:
+GET ALL
+GET BY : ID, NAME
+
+## Consumable and Non Combat:
 

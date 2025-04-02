@@ -5,7 +5,6 @@ from pymongo import ReturnDocument
 from models.models import WeaponIn, WeaponOut, AbilityIn, AbilityOut, AbilityMechIn,AbilityMechOut,SkyshipUpgradesIn
 from models.models import SkyshipUpgradesOut, GameItem,UserIn,Developer, Player, ConsumablesAndNoncombatItemsIn, ConsumablesAndNoncombatItemsOut
 from serializers import serialize_weapon, serialize_weapons, serialize_abilities, serialize_ability, serialize_ability_mech, serialize_ability_mechs,serialize_consumable, serialize_consumables, serialize_skyship_upgrade, serialize_skyship_upgrades
-from fastapi import APIRouter
 from fastapi import APIRouter, Depends
 from db.db_main import collection_weapons, collection_ability_mechanics, collection_consumables
 from db.db_main import collection_skyship_upgrades, collection_abilities, collection_devs_data, collection_players_data
@@ -43,7 +42,7 @@ async def get_all_weapons():
         raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
 
 # GET BY ID
-@endPoint.get("/weapons/{custom_id}", response_model=WeaponOut)
+@endPoint.get("/weapons/by_ID/{custom_id}/", response_model=WeaponOut)
 async def get_weapon_by_custom_id(custom_id: int = Path(..., gt=0)):
     """Retourne une arme via son custom_id"""
     try:
@@ -65,14 +64,15 @@ async def get_weapon_by_custom_id(custom_id: int = Path(..., gt=0)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
 
-# GET BY NAME
-@endPoint.get("/weapons/{weapon_name}")
-async def get_weapon_by_name(weapon_name:str = Path(..., title="Weapon name")):
+
+@endPoint.get("/weapons/by_name/{weapon_name}/",response_model=WeaponOut)
+async def get_weapon_by_name(
+    weapon_name: str = Path(..., title="Weapon name", description="Nom de l'arme")
+):
     try:
         weapon = await collection_weapons.find_one({"Name": weapon_name})
         if not weapon:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Weapon with Name {weapon_name} not found.")
-
         return serialize_weapon(weapon)
 
     except HTTPException as http_err:
@@ -85,6 +85,7 @@ async def get_weapon_by_name(weapon_name:str = Path(..., title="Weapon name")):
         raise HTTPException(status_code=504, detail="Temps d'attente dépassé pour récupérer l'arme.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
+
 
 # POST
 @endPoint.post("/weapons/create/", response_model=WeaponOut)
@@ -182,7 +183,7 @@ async def get_all_ability_mechs():
         raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
 
 # GET BY NAME
-@endPoint.get("/ability_mechs/{name}", response_model=AbilityMechOut)
+@endPoint.get("/ability_mechs/by_name/{name}", response_model=AbilityMechOut)
 async def get_ability_mech_by_name(name: str):
     """Retourne une mécanique de capacité via son nom"""
     try:
@@ -190,6 +191,29 @@ async def get_ability_mech_by_name(name: str):
 
         if not ability_mech:
             raise HTTPException(status_code=404, detail=f"Ability Mech with name {name} not found.")
+
+        return serialize_ability_mech(ability_mech)
+
+    except HTTPException as http_err:
+        raise http_err
+    except ValueError as ve:
+        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
+    except ConnectionError:
+        raise HTTPException(status_code=503, detail="Service indisponible.")
+    except TimeoutError:
+        raise HTTPException(status_code=504, detail="Temps d'attente dépassé.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+    
+# GET BY ID
+@endPoint.get("/ability_mechs/by_ID/{custom_id}", response_model=AbilityMechOut)
+async def get_ability_mech_by_name(custom_id: int):
+    """Retourne une mécanique de capacité via son nom"""
+    try:
+        ability_mech = await collection_ability_mechanics.find_one({"custom_id": custom_id})
+
+        if not ability_mech:
+            raise HTTPException(status_code=404, detail=f"Ability Mech with name {custom_id} not found.")
 
         return serialize_ability_mech(ability_mech)
 
@@ -259,7 +283,7 @@ async def get_all_skyship_upgrades():
         raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
 
 # GET BY ID
-@endPoint.get("/skyship_upgrades/{custom_id}", response_model=SkyshipUpgradesOut)
+@endPoint.get("/skyship_upgrades/by_ID/{custom_id}", response_model=SkyshipUpgradesOut)
 async def get_skyship_upgrade_by_custom_id(custom_id: int = Path(..., gt=0)):
     """Retourne une amélioration de Skyship via son custom_id"""
     try:
@@ -267,6 +291,29 @@ async def get_skyship_upgrade_by_custom_id(custom_id: int = Path(..., gt=0)):
 
         if not skyship_upgrade:
             raise HTTPException(status_code=404, detail=f"Skyship upgrade with custom_id {custom_id} not found.")
+
+        return serialize_skyship_upgrade(skyship_upgrade)
+
+    except HTTPException as http_err:
+        raise http_err
+    except ValueError as ve:
+        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
+    except ConnectionError:
+        raise HTTPException(status_code=503, detail="Service indisponible.")
+    except TimeoutError:
+        raise HTTPException(status_code=504, detail="Temps d'attente dépassé.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+
+# GET BY NAME
+@endPoint.get("/skyship_upgrades/by_name/{name}", response_model=SkyshipUpgradesOut)
+async def get_skyship_upgrade_by_custom_id(name: str = Path(...)):
+    """Retourne une amélioration de Skyship via son custom_id"""
+    try:
+        skyship_upgrade = await collection_skyship_upgrades.find_one({"Name": name})
+
+        if not skyship_upgrade:
+            raise HTTPException(status_code=404, detail=f"Skyship upgrade with custom_id {name} not found.")
 
         return serialize_skyship_upgrade(skyship_upgrade)
 
@@ -332,7 +379,7 @@ async def get_all_consumables_and_noncombat_items():
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 # GET BY ID
-@endPoint.get("/consumables_and_noncombat_items/{custom_id}", response_model=ConsumablesAndNoncombatItemsOut)
+@endPoint.get("/consumables_and_noncombat_items/by_ID/{custom_id}", response_model=ConsumablesAndNoncombatItemsOut)
 async def get_consumable_and_noncombat_item_by_custom_id(custom_id: int = Path(..., gt=0)):
     """Retourne un objet consommable ou non-combattant via son custom_id"""
     try:
@@ -351,7 +398,7 @@ async def get_consumable_and_noncombat_item_by_custom_id(custom_id: int = Path(.
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 # GET BY NAME
-@endPoint.get("/consumables_and_noncombat_items/{name}", response_model=ConsumablesAndNoncombatItemsOut)
+@endPoint.get("/consumables_and_noncombat_items/by_name/{name}", response_model=ConsumablesAndNoncombatItemsOut)
 async def get_consumable_by_name(name: str):
     """Retourne un consommable ou objet non-combattant via son nom"""
     try:
@@ -413,8 +460,9 @@ async def get_all_abilities():
         raise http_ex  # Renvoie l'erreur HTTP exacte
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error: {str(e)}")
+    
 # GET BY ID
-@endPoint.get("/abilities/{custom_id}", response_model=AbilityOut)
+@endPoint.get("/abilities/by_ID/{custom_id}", response_model=AbilityOut)
 async def get_ability_by_custom_id(custom_id: int = Path(..., gt=0)):
     """Retourne une capacité via son custom_id"""
     try:
@@ -431,7 +479,7 @@ async def get_ability_by_custom_id(custom_id: int = Path(..., gt=0)):
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error: {str(e)}")
 
 # GET BY NAME
-@endPoint.get("/abilities/{name}", response_model=AbilityOut)
+@endPoint.get("/abilities/by_name/{name}", response_model=AbilityOut)
 async def get_ability_by_name(name: str):
     """Retourne une capacité via son nom"""
     try:
