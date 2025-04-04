@@ -104,6 +104,7 @@ class AbilityIn(BaseModel):
     Creator: Optional[str] = None
     Description: Optional[str] = None
     Duration: Optional[int] = None
+    Duration_additional_infos: Optional[str] = None
     Name: str
     Particle_Effect: Optional[str] = None
     Power_Cost: Optional[str] = None

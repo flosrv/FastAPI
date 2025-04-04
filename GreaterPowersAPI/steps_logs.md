@@ -3,8 +3,6 @@ GET ALL
 GET BY : ID, NAME
 POST
 
-## Abilities:
-
 ## Ability Mechs:
 GET ALL
 GET BY : NAME, ID
@@ -14,4 +12,8 @@ GET ALL
 GET BY : ID, NAME
 
 ## Consumable and Non Combat:
+GET ALL
+GET BY : ID, NAME
+
+## Abilities:
 

@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, Path, status, Body
-from typing import List, Optional,Union,Dict, Any
+from typing import List, Optional,Union,Dict, Any, Annotated
 from bson import ObjectId
 from pymongo import ReturnDocument
 from models.models import WeaponIn, WeaponOut, AbilityIn, AbilityOut, AbilityMechIn,AbilityMechOut,SkyshipUpgradesIn
 from models.models import SkyshipUpgradesOut, GameItem,UserIn,Developer, Player, ConsumablesAndNoncombatItemsIn, ConsumablesAndNoncombatItemsOut
 from serializers import serialize_weapon, serialize_weapons, serialize_abilities, serialize_ability, serialize_ability_mech, serialize_ability_mechs,serialize_consumable, serialize_consumables, serialize_skyship_upgrade, serialize_skyship_upgrades
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends,Query, Body, Path
 from db.db_main import collection_weapons, collection_ability_mechanics, collection_consumables
 from db.db_main import collection_skyship_upgrades, collection_abilities, collection_devs_data, collection_players_data
 from fastapi import HTTPException, status
@@ -64,7 +64,7 @@ async def get_weapon_by_custom_id(custom_id: int = Path(..., gt=0)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
 
-
+#GET BY NAME
 @endPoint.get("/weapons/by_name/{weapon_name}/",response_model=WeaponOut)
 async def get_weapon_by_name(
     weapon_name: str = Path(..., title="Weapon name", description="Nom de l'arme")
@@ -86,34 +86,34 @@ async def get_weapon_by_name(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
 
-
-# POST
-@endPoint.post("/weapons/create/", response_model=WeaponOut)
-async def create_weapon(weapon_data: WeaponIn):
+# GET ATTRIBUTES BY ID
+@endPoint.get("/weapons/by_ID/{custom_id}/get_attributes/", response_model=Dict[str, Any])
+async def get_weapon_attr_by_id(
+    custom_id: int = Path(..., title="Custom ID", description="The ID of the weapon", gt=0),
+    q: Annotated[List[str], Query(title="Attributes", description="List of attributes to retrieve")] = None
+):
+    """Retourne les attributs demandés d'une arme via son id"""
     try:
-        max_weapon = await collection_weapons.find_one({}, sort=[("custom_id", -1)])
-        new_custom_id = max_weapon["custom_id"] + 1 if max_weapon else 1
+        weapon = await collection_weapons.find_one({"custom_id": custom_id})
 
-        weapon_dict = weapon_data.model_dump(exclude_unset=True)
-        weapon_dict["custom_id"] = new_custom_id  
+        if not weapon:
+            raise HTTPException(status_code=404, detail=f"Weapon with ID {custom_id} not found.")
 
-        result = await collection_weapons.insert_one(weapon_dict)
-        weapon_dict["_id"] = str(result.inserted_id)  
+        if not q:
+            raise HTTPException(status_code=400, detail="Aucun attribut spécifié.")
 
-        return WeaponOut(**weapon_dict)
+        result_dict = {}
+        for attr in q:
+            if attr not in weapon:
+                raise HTTPException(status_code=404, detail=f"Attribut '{attr}' non trouvé dans Weapon.")
+            result_dict[attr] = weapon[attr]
+
+        return result_dict
 
     except HTTPException as http_err:
         raise http_err
-    except ValueError as ve:
-        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
-    except ConnectionError:
-        raise HTTPException(status_code=503, detail="Service indisponible, problème de connexion à la base de données.")
-    except TimeoutError:
-        raise HTTPException(status_code=504, detail="Temps d'attente dépassé pour la création de l'arme.")
-    except KeyError as ke:
-        raise HTTPException(status_code=400, detail=f"Clé manquante dans les données envoyées: {str(ke)}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
 
 # PATCH
 @endPoint.patch("/weapons/update/{custom_id}")
@@ -151,6 +151,34 @@ async def update_weapon(custom_id: int = Path(..., title="Weapon id"), updates: 
         raise HTTPException(status_code=503, detail="Service indisponible, problème de connexion à la base de données.")
     except TimeoutError:
         raise HTTPException(status_code=504, detail="Temps d'attente dépassé pour la mise à jour.")
+    except KeyError as ke:
+        raise HTTPException(status_code=400, detail=f"Clé manquante dans les données envoyées: {str(ke)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
+
+# POST
+@endPoint.post("/weapons/create/", response_model=WeaponOut)
+async def create_weapon(weapon_data: WeaponIn):
+    try:
+        max_weapon = await collection_weapons.find_one({}, sort=[("custom_id", -1)])
+        new_custom_id = max_weapon["custom_id"] + 1 if max_weapon else 1
+
+        weapon_dict = weapon_data.model_dump(exclude_unset=True)
+        weapon_dict["custom_id"] = new_custom_id  
+
+        result = await collection_weapons.insert_one(weapon_dict)
+        weapon_dict["_id"] = str(result.inserted_id)  
+
+        return WeaponOut(**weapon_dict)
+
+    except HTTPException as http_err:
+        raise http_err
+    except ValueError as ve:
+        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
+    except ConnectionError:
+        raise HTTPException(status_code=503, detail="Service indisponible, problème de connexion à la base de données.")
+    except TimeoutError:
+        raise HTTPException(status_code=504, detail="Temps d'attente dépassé pour la création de l'arme.")
     except KeyError as ke:
         raise HTTPException(status_code=400, detail=f"Clé manquante dans les données envoyées: {str(ke)}")
     except Exception as e:
@@ -207,8 +235,8 @@ async def get_ability_mech_by_name(name: str):
     
 # GET BY ID
 @endPoint.get("/ability_mechs/by_ID/{custom_id}", response_model=AbilityMechOut)
-async def get_ability_mech_by_name(custom_id: int):
-    """Retourne une mécanique de capacité via son nom"""
+async def get_ability_mech_by_id(custom_id: int):
+    """Retourne une mécanique de capacité via son id"""
     try:
         ability_mech = await collection_ability_mechanics.find_one({"custom_id": custom_id})
 
@@ -227,6 +255,67 @@ async def get_ability_mech_by_name(custom_id: int):
         raise HTTPException(status_code=504, detail="Temps d'attente dépassé.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+
+# GET ATTR BY ID
+@endPoint.get("/ability_mechs/by_ID/{custom_id}/get_attributes/", response_model=Dict[str, Any])
+async def get_ability_mech_attr_by_id(
+    custom_id: int = Path(..., title="Custom ID", description="The ID of the ability mech", gt=0),
+    q: Annotated[List[str], Query(title="Attributes", description="List of attributes to retrieve")] = None
+):
+    """Retourne les attributs demandés d'une mécanique de capacité via son id"""
+
+    try:
+        # Récupérer le mécanisme de capacité avec l'id
+        ability_mech = await collection_ability_mechanics.find_one({"custom_id": custom_id})
+
+        if not ability_mech:
+            raise HTTPException(status_code=404, detail=f"Ability Mech with ID {custom_id} not found.")
+
+        # Si aucun attribut demandé
+        if not q:
+            raise HTTPException(status_code=400, detail="Aucun attribut spécifié.")
+
+        # Filtrer et renvoyer uniquement les attributs demandés
+        result_dict = {}
+        for attr in q:
+            if attr not in ability_mech:
+                raise HTTPException(status_code=404, detail=f"Attribut '{attr}' non trouvé dans Ability Mech.")
+            result_dict[attr] = ability_mech[attr]
+
+        return result_dict
+
+    except HTTPException as http_err:
+        raise http_err
+    except ValueError as ve:
+        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
+    except ConnectionError:
+        raise HTTPException(status_code=503, detail="Service indisponible.")
+    except TimeoutError:
+        raise HTTPException(status_code=504, detail="Temps d'attente dépassé.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+
+# PATCH ATTRIBUTES BY ID
+@endPoint.patch("/ability_mechs/update_attributes/{custom_id}")
+async def update_ability_mech_attributes(
+    custom_id: int = Path(..., title="Ability Mech ID", description="The ID of the ability mech", gt=0),
+    updates: List[Dict[str, Any]] = Body(..., title="Updates", description="List of attributes to update")
+):
+    """Met à jour les attributs d'une mécanique de capacité via son ID"""
+    try:
+        ability_mech = await collection_ability_mechanics.find_one({"custom_id": custom_id})
+        if not ability_mech:
+            raise HTTPException(status_code=404, detail=f"Ability Mech with ID {custom_id} not found.")
+
+        update_dict = {list(update.keys())[0]: list(update.values())[0] for update in updates}
+        await collection_ability_mechanics.update_one({"custom_id": custom_id}, {"$set": update_dict})
+
+        return {"message": "Ability Mech attributes updated successfully", "updated_attributes": update_dict}
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
 # POST
 @endPoint.post("/ability_mechs/create", response_model=AbilityMechOut)
@@ -328,6 +417,57 @@ async def get_skyship_upgrade_by_custom_id(name: str = Path(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
 
+# GET ATTRIBUTES FOR SKYSHIP UPGRADES
+@endPoint.get("/skyship_upgrades/by_ID/{custom_id}/get_attributes/", response_model=Dict[str, Any])
+async def get_skyship_upgrade_attr_by_id(
+    custom_id: int = Path(..., title="Custom ID", description="The ID of the skyship upgrade", gt=0),
+    q: Annotated[List[str], Query(title="Attributes", description="List of attributes to retrieve")] = None
+):
+    """Retourne les attributs demandés d'une amélioration de Skyship via son id"""
+    try:
+        skyship_upgrade = await collection_skyship_upgrades.find_one({"custom_id": custom_id})
+
+        if not skyship_upgrade:
+            raise HTTPException(status_code=404, detail=f"Skyship Upgrade with ID {custom_id} not found.")
+
+        if not q:
+            raise HTTPException(status_code=400, detail="Aucun attribut spécifié.")
+
+        result_dict = {}
+        for attr in q:
+            if attr not in skyship_upgrade:
+                raise HTTPException(status_code=404, detail=f"Attribut '{attr}' non trouvé dans Skyship Upgrade.")
+            result_dict[attr] = skyship_upgrade[attr]
+
+        return result_dict
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+
+# PATCH ATTRIBUTES FOR SKYSHIP UPGRADES
+@endPoint.patch("/skyship_upgrades/update_attributes/{custom_id}")
+async def update_skyship_upgrade_attributes(
+    custom_id: int = Path(..., title="Skyship Upgrade ID", description="The ID of the skyship upgrade", gt=0),
+    updates: List[Dict[str, Any]] = Body(..., title="Updates", description="List of attributes to update")
+):
+    """Met à jour les attributs d'une amélioration de Skyship via son ID"""
+    try:
+        skyship_upgrade = await collection_skyship_upgrades.find_one({"custom_id": custom_id})
+        if not skyship_upgrade:
+            raise HTTPException(status_code=404, detail=f"Skyship Upgrade with ID {custom_id} not found.")
+
+        update_dict = {list(update.keys())[0]: list(update.values())[0] for update in updates}
+        await collection_skyship_upgrades.update_one({"custom_id": custom_id}, {"$set": update_dict})
+
+        return {"message": "Skyship Upgrade attributes updated successfully", "updated_attributes": update_dict}
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
 # POST
 @endPoint.post("/skyship_upgrades/create/", response_model=SkyshipUpgradesOut)
 async def create_skyship_upgrade(skyship_upgrade_data: SkyshipUpgradesIn):
@@ -416,6 +556,56 @@ async def get_consumable_by_name(name: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
+# GET ATTRIBUTES FOR CONSUMABLES AND NON-COMBAT ITEMS
+@endPoint.get("/consumables_and_noncombat_items/by_ID/{custom_id}/get_attributes/", response_model=Dict[str, Any])
+async def get_consumable_attr_by_id(
+    custom_id: int = Path(..., title="Custom ID", description="The ID of the consumable or non-combat item", gt=0),
+    q: Annotated[List[str], Query(title="Attributes", description="List of attributes to retrieve")] = None
+):
+    """Retourne les attributs demandés d'un consommable ou objet non-combattant via son id"""
+    try:
+        consumable = await collection_consumables.find_one({"custom_id": custom_id})
+
+        if not consumable:
+            raise HTTPException(status_code=404, detail=f"Consumable with ID {custom_id} not found.")
+
+        if not q:
+            raise HTTPException(status_code=400, detail="Aucun attribut spécifié.")
+
+        result_dict = {}
+        for attr in q:
+            if attr not in consumable:
+                raise HTTPException(status_code=404, detail=f"Attribut '{attr}' non trouvé dans Consumable.")
+            result_dict[attr] = consumable[attr]
+
+        return result_dict
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+
+# PATCH ATTRIBUTES FOR CONSUMABLES AND NON-COMBAT ITEMS
+@endPoint.patch("/consumables_and_noncombat_items/update_attributes/{custom_id}")
+async def update_consumable_attributes(
+    custom_id: int = Path(..., title="Consumable ID", description="The ID of the consumable or non-combat item", gt=0),
+    updates: List[Dict[str, Any]] = Body(..., title="Updates", description="List of attributes to update")
+):
+    """Met à jour les attributs d'un consommable ou objet non-combattant via son ID"""
+    try:
+        consumable = await collection_consumables.find_one({"custom_id": custom_id})
+        if not consumable:
+            raise HTTPException(status_code=404, detail=f"Consumable with ID {custom_id} not found.")
+
+        update_dict = {list(update.keys())[0]: list(update.values())[0] for update in updates}
+        await collection_consumables.update_one({"custom_id": custom_id}, {"$set": update_dict})
+
+        return {"message": "Consumable attributes updated successfully", "updated_attributes": update_dict}
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 # POST
 @endPoint.post("/consumables_and_noncombat_items/create", response_model=ConsumablesAndNoncombatItemsOut)
 async def create_consumable(consumable_data: ConsumablesAndNoncombatItemsIn):
@@ -461,6 +651,31 @@ async def get_all_abilities():
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error: {str(e)}")
     
+async def get_all_weapons():
+    """Retourne la liste de toutes les armes"""
+    try:
+        weapons_cursor = collection_weapons.find({})
+        weapons = await weapons_cursor.to_list(length=None)  
+
+        if not weapons:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No weapons found.")
+
+        serialized_weapons = [serialize_weapon(weapon) for weapon in weapons]
+        return serialized_weapons
+
+    except HTTPException as http_err:
+        raise http_err
+    except ValueError as ve:
+        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
+    except ConnectionError:
+        raise HTTPException(status_code=503, detail="Service indisponible, problème de connexion à la base de données.")
+    except TimeoutError:
+        raise HTTPException(status_code=504, detail="Temps d'attente dépassé pour récupérer les armes.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
+
+
+
 # GET BY ID
 @endPoint.get("/abilities/by_ID/{custom_id}", response_model=AbilityOut)
 async def get_ability_by_custom_id(custom_id: int = Path(..., gt=0)):
@@ -496,6 +711,57 @@ async def get_ability_by_name(name: str):
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Invalid name format.")
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error: {str(e)}")
+
+# GET ATTRIBUTES FOR ABILITIES
+@endPoint.get("/abilities/by_ID/{custom_id}/get_attributes/", response_model=Dict[str, Any])
+async def get_ability_attr_by_id(
+    custom_id: int = Path(..., title="Custom ID", description="The ID of the ability", gt=0),
+    q: Annotated[List[str], Query(title="Attributes", description="List of attributes to retrieve")] = None
+):
+    """Retourne les attributs demandés d'une capacité via son id"""
+    try:
+        ability = await collection_abilities.find_one({"custom_id": custom_id})
+
+        if not ability:
+            raise HTTPException(status_code=404, detail=f"Ability with ID {custom_id} not found.")
+
+        if not q:
+            raise HTTPException(status_code=400, detail="Aucun attribut spécifié.")
+
+        result_dict = {}
+        for attr in q:
+            if attr not in ability:
+                raise HTTPException(status_code=404, detail=f"Attribut '{attr}' non trouvé dans Ability.")
+            result_dict[attr] = ability[attr]
+
+        return result_dict
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur inconnue: {str(e)}")
+
+# PATCH ATTRIBUTES FOR ABILITIES
+@endPoint.patch("/abilities/update_attributes/{custom_id}")
+async def update_ability_attributes(
+    custom_id: int = Path(..., title="Ability ID", description="The ID of the ability", gt=0),
+    updates: List[Dict[str, Any]] = Body(..., title="Updates", description="List of attributes to update")
+):
+    """Met à jour les attributs d'une capacité via son ID"""
+    try:
+        ability = await collection_abilities.find_one({"custom_id": custom_id})
+        if not ability:
+            raise HTTPException(status_code=404, detail=f"Ability with ID {custom_id} not found.")
+
+        update_dict = {list(update.keys())[0]: list(update.values())[0] for update in updates}
+        await collection_abilities.update_one({"custom_id": custom_id}, {"$set": update_dict})
+
+        return {"message": "Ability attributes updated successfully", "updated_attributes": update_dict}
+
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
 # POST
 @endPoint.post("/abilities/create", response_model=AbilityOut)
