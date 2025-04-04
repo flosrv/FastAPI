@@ -651,31 +651,6 @@ async def get_all_abilities():
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error: {str(e)}")
     
-async def get_all_weapons():
-    """Retourne la liste de toutes les armes"""
-    try:
-        weapons_cursor = collection_weapons.find({})
-        weapons = await weapons_cursor.to_list(length=None)  
-
-        if not weapons:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No weapons found.")
-
-        serialized_weapons = [serialize_weapon(weapon) for weapon in weapons]
-        return serialized_weapons
-
-    except HTTPException as http_err:
-        raise http_err
-    except ValueError as ve:
-        raise HTTPException(status_code=422, detail=f"Erreur de validation: {str(ve)}")
-    except ConnectionError:
-        raise HTTPException(status_code=503, detail="Service indisponible, problème de connexion à la base de données.")
-    except TimeoutError:
-        raise HTTPException(status_code=504, detail="Temps d'attente dépassé pour récupérer les armes.")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erreur serveur inconnue: {str(e)}")
-
-
-
 # GET BY ID
 @endPoint.get("/abilities/by_ID/{custom_id}", response_model=AbilityOut)
 async def get_ability_by_custom_id(custom_id: int = Path(..., gt=0)):
@@ -786,6 +761,7 @@ async def create_ability(ability_data: AbilityIn):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Missing required fields.")
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Unexpected error: {str(e)}")
+
 #############################################################################################
 
 
