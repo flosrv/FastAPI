@@ -12,7 +12,7 @@ with open(path_to_mysql_creds, 'r') as file:
     mysql_port = content["port"]
     mysql_host = content["host"]
 
-database_darkstar = "Darkstar_Games"
+database_darkstar = "darkstar_Games"
 
 # Connexion MySQL
 SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://{mysql_user}:{mysql_password}@{mysql_host}/{database_darkstar}"
